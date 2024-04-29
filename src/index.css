@@ -1,0 +1,262 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
+
+* {
+  margin: 0 10px;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Roboto Condensed", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  background-color: #4f4a45;
+}
+
+/* Navbar */
+.nav-bar {
+  display: flex;
+  gap: 5px;
+  justify-content: flex-end;
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.nav-bar a {
+  text-decoration: underline;
+  color: #7a9d54;
+  font-weight: bolder;
+}
+
+/* Create and Update buttons*/
+.create-btn-div,
+.update-btn-div {
+  display: flex;
+  gap: 5px;
+  margin: 5px;
+}
+
+.user-input-create,
+.user-input-update {
+  padding: 6px 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+}
+
+.color-picker {
+  height: 35px;
+}
+
+.update-btn,
+.generate-cars-btn,
+.race-btn,
+.reset-btn {
+  padding: 8px 16px;
+  font-size: 16px;
+  border: 2px solid #7a9d54;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #7a9d54;
+  cursor: pointer;
+}
+
+.generate-cars-btn,
+.race-btn,
+.reset-btn {
+  margin: 5px;
+}
+.create-btn {
+  padding: 8px 18px;
+  font-size: 16px;
+  border: 2px solid #7a9d54;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #7a9d54;
+  cursor: pointer;
+}
+.create-btn:hover,
+.update-btn:hover,
+.generate-cars-btn:hover,
+.reset-btn:hover,
+.race-btn:hover {
+  background-color: #7a9d54;
+  color: #fff;
+}
+
+.page-data {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px;
+}
+.page-data button {
+  padding: 5px 7px;
+  font-size: 12px;
+  border: 2px solid #7a9d54;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #7a9d54;
+  cursor: pointer;
+}
+.page-data span,
+.page-data p {
+  text-align: center;
+  font-size: 20px;
+  color: #7a9d54;
+}
+.car-container {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.edit-delete-btn,
+.start-stop-btn {
+  display: flex;
+  flex-direction: column;
+}
+.edit:active {
+  color: #fff;
+}
+.car {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.car button {
+  padding: 8px 16px;
+  font-size: 16px;
+  border: 2px solid #7a9d54;
+  border-radius: 4px;
+  background-color: transparent;
+  color: #7a9d54;
+  cursor: pointer;
+  margin: 2px;
+}
+
+.car-icon {
+  font-size: 45px;
+  margin-left: 5px;
+  transition: transform 0.5s ease;
+}
+
+.car-icon.moving {
+  animation: moveCar 5s linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes moveCar {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(1000px);
+  }
+}
+
+/* Winners Table */
+.winners-table {
+  margin-top: 50px;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.winners-table th,
+.winners-table td {
+  padding: 8px;
+  border-bottom: 1px solid #7a9d54;
+  text-align: left;
+  color: #ddd;
+}
+
+.winners-table th {
+  background-color: #7a9d54;
+}
+
+.sort {
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.sort:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  color: #7a9d54;
+}
+
+/* For screens up to 500px width */
+@media screen and (max-width: 500px) {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    font-size: 14px;
+  }
+
+  .nav-bar {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .create-btn-div,
+  .update-btn-div {
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 0;
+  }
+
+  .user-input-create,
+  .user-input-update {
+    width: 80%;
+    margin: 5px 0;
+  }
+
+  .create-btn,
+  .update-btn,
+  .generate-cars-btn,
+  .race-btn,
+  .reset-btn,
+  .page-data button {
+    width: 80%;
+    margin: 5px 0;
+  }
+
+  .page-data {
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 0;
+  }
+
+  .page-data span,
+  .page-data p {
+    font-size: 16px;
+  }
+
+  .car-container {
+    margin: 10px 0;
+    padding: 15px;
+  }
+
+  .car button {
+    width: 80%;
+  }
+
+  .winners-table {
+    margin-top: 30px;
+  }
+
+  .winners-table th,
+  .winners-table td {
+    padding: 5px;
+  }
+}

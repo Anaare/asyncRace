@@ -4,6 +4,33 @@
 Deployment Link: https://main--asyncraceprjct.netlify.app/
 Score: 310
 
+## Getting Started with the Project
+
+1. **Clone the Repository**: 
+   ```bash
+   git clone <repository_url>
+   ```
+
+2. **Navigate to the Project Directory**:
+   ```bash
+   cd Async-Race
+   ```
+
+3. **Install Dependencies**: 
+   After navigating to the project directory, install dependencies using npm:
+   ```bash
+   npm install
+   ```
+
+4. **Start the Development Server**: 
+   Once the dependencies are installed, start the development server using the following command:
+   ```bash
+   npm run dev
+   ```
+
+5. **Open in Browser**: 
+   Open your web browser and navigate to the development server URL (typically http://localhost:5173/) to view the project.
+
 # Async-Race Checklist
 
 ## 1. View Configuration (30 points)

@@ -8,9 +8,9 @@ import Pagination from "../Pagination";
 import ResetButton from "./Reset";
 
 export interface CarData {
-  id: number;
   name: string;
   color: string;
+  id: number;
 }
 
 function Garage() {
@@ -64,6 +64,9 @@ function Garage() {
     setIsRacing((prevState) => !prevState);
   };
 
+  const handleGenerateCars = (cars: CarData[]) => {
+    setLocalCars(cars);
+  };
   return (
     <div>
       <Create onCreateCar={handleCarCreation} />
@@ -71,19 +74,7 @@ function Garage() {
       <div className="container">
         <RaceButton onClick={toggleRace} isRacing={isRacing} />
         <ResetButton onClick={toggleRace} isRacing={isRacing} />
-        <GenerateCars
-          onGenerateCars={(cars) => {
-            const validCars = cars.filter(
-              (car) => typeof car.props !== "undefined"
-            );
-            const carDataArray = validCars.map((carElement) => ({
-              id: carElement.props.id,
-              name: carElement.props.name,
-              color: carElement.props.color,
-            }));
-            setLocalCars([...localCars, ...carDataArray]);
-          }}
-        />
+        <GenerateCars onGenerateCars={handleGenerateCars} />
         <div className="page-data">
           <p>Garage({localCars.length})</p>
           <Pagination

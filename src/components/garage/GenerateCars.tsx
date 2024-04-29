@@ -1,37 +1,27 @@
-import axios from "axios";
-import Car from "./Car";
-import dataForRandomCarGenerator from "./dataForRandomCarGenerator.tsx";
+import { RandomCars, carBrands, colors } from "./dataForRandomCarGenerator";
 
 interface GenerateCarsProps {
-  onGenerateCars: (cars: JSX.Element[]) => void;
+  onGenerateCars: (cars: RandomCars[]) => void;
 }
 
 function GenerateCars({ onGenerateCars }: GenerateCarsProps) {
   function generateCars() {
-    const carsElements: JSX.Element[] = dataForRandomCarGenerator.map(
-      (car: any, index: number) => {
-        axios
-          .post("http://localhost:3000/garage", car)
-          .then((response) => {
-            console.log("Car data sent:", response.data);
-          })
-          .catch((error) => {
-            console.error("Error:", error);
-          });
+    const cars: RandomCars[] = [];
 
-        return (
-          <Car
-            key={index}
-            car={{ id: car.id, color: car.color, name: car.brand }}
-            onEdit={() => {}}
-            onDelete={() => {}}
-            isRacing={false}
-          />
-        );
-      }
-    );
+    for (let i = 0; i < 100; i++) {
+      const carData: RandomCars = {
+        id: i + 1,
+        name: getRandomCar(carBrands),
+        color: getRandomCar(colors),
+      };
+      cars.push(carData);
+    }
 
-    onGenerateCars(carsElements);
+    onGenerateCars(cars);
+  }
+
+  function getRandomCar(arr: string[]) {
+    return arr[Math.floor(Math.random() * arr.length)];
   }
 
   return (

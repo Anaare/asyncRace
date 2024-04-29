@@ -1,10 +1,10 @@
-type Car = {
-  brand: string;
+export interface RandomCars {
+  name: string;
   color: string;
   id: number;
-};
+}
 
-const carBrands = [
+export const carBrands = [
   "Toyota",
   "Honda",
   "Ford",
@@ -107,7 +107,7 @@ const carBrands = [
   "Trabant",
 ];
 
-const colors = [
+export const colors = [
   "Black",
   "White",
   "Red",
@@ -124,18 +124,3 @@ const colors = [
   "Beige",
   "Cyan",
 ];
-
-function getRandomCar(arr: string[]) {
-  return arr[Math.floor(Math.random() * arr.length)];
-}
-
-const cars: Car[] = [];
-
-for (let i = 0; i < 100; i++) {
-  const brand = getRandomCar(carBrands);
-  const color = getRandomCar(colors);
-  const id = i + 1;
-  cars.push({ brand, color, id });
-}
-
-export default cars;

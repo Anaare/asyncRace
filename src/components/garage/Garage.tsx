@@ -75,7 +75,7 @@ function Garage() {
 
   return (
     <div>
-      <Create onCreateCar={handleCarCreation} />
+      <Create onCreateCar={(car) => handleCarCreation(car as CarData)} />
       <Update onUpdateCar={handleUpdateCar} />
       <div className="container">
         <RaceButton onClick={toggleRace} isRacing={isRacing} />

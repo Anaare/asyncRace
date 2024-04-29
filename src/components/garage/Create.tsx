@@ -10,8 +10,11 @@ const Create: React.FC<CreateProps> = ({ onCreateCar }) => {
   const [carColor, setCarColor] = useState("#000000");
 
   const handleCreateCar = () => {
-    const newCar = { name: carName, color: carColor };
-
+    const newCarId = Date.now();
+    const newCar = { id: newCarId, name: carName, color: carColor };
+    onCreateCar(newCar);
+    setCarName("");
+    setCarColor("#000000");
     axios
       .post("http://localhost:3000/garage", newCar)
       .then((response) => {

@@ -1,10 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Create from "./Create";
 import Update from "./Update";
 import RaceButton from "./Race";
 import GenerateCars from "./GenerateCars";
 import Car from "./Car";
-import useFetch from "../../useFetch";
 import Pagination from "../Pagination";
 import ResetButton from "./Reset";
 
@@ -13,26 +12,22 @@ export interface CarData {
   name: string;
   color: string;
 }
+
 function Garage() {
-  const [localCars, setLocalCars] = useState<CarData[]>([]);
+  const [localCars, setLocalCars] = useState<CarData[]>([]); // Initialize with an empty array
   const [currentPage, setCurrentPage] = useState(1);
   const [isRacing, setIsRacing] = useState(false);
   const [selectedCarIndex, setSelectedCarIndex] = useState<number | null>(null);
-  const [fetchedCars] = useFetch("http://localhost:3000/garage");
   const [engineStatus, setEngineStatus] = useState<{ [key: number]: boolean }>(
     {}
   );
   const carsPerPage = 7;
 
+  // No need to fetch data from the server initially
+
   const handleCarCreation = (carData: CarData) => {
     setLocalCars([...localCars, carData]);
   };
-
-  useEffect(() => {
-    if (Array.isArray(fetchedCars) && localCars.length === 0) {
-      setLocalCars([...fetchedCars]);
-    }
-  }, [fetchedCars]);
 
   const handleEdit = (index: number) => {
     setSelectedCarIndex(index);
@@ -69,13 +64,9 @@ function Garage() {
     setIsRacing((prevState) => !prevState);
   };
 
-  if (!fetchedCars) {
-    return <div>Loading...</div>;
-  }
-
   return (
     <div>
-      <Create onCreateCar={(car) => handleCarCreation(car as CarData)} />
+      <Create onCreateCar={handleCarCreation} />
       <Update onUpdateCar={handleUpdateCar} />
       <div className="container">
         <RaceButton onClick={toggleRace} isRacing={isRacing} />
@@ -130,4 +121,5 @@ function Garage() {
     </div>
   );
 }
+
 export default Garage;
